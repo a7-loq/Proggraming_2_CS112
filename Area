@@ -1,0 +1,10 @@
+public class Area {
+	public static void main(String[] arges) {
+		int W=3;
+		int L=4;
+		int Area=W*L;
+		System.out.println("Area");
+	}
+
+}
+
