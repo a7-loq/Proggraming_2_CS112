@@ -1,0 +1,85 @@
+Proggraming_2_HW7
+
+Exercise 1:
+Write a recursive method for countdown. For example, if the user enters 10, 
+the method should perform the countdown starting from 10 to 0.
+
+Write the code in a single .java file named Ex1Lab07.java 
+which should also contain the main method for testing.
+
+
+
+Exercise 2:
+Write a recursive method that displays an int value reversely on the console 
+using the following header:public static void reverseDisplay(int value)
+For example, reverseDisplay(12345) displays 54321. Write a test program that 
+prompts the user to enter an integer and displays its reversal.
+
+Write the code in a single .java file named Ex2Lab07.java 
+which should also contain the main method for testing.
+
+----------------------------------------------------------------------------------------------------------------------
+Solution Exercise 1 :
+
+import java.util.Scanner;
+
+            public class Ex1Lab07 {
+            	
+            public static void main(String[] args) {
+	
+            Scanner input = new Scanner(System.in);
+                 System.out.println("Enter Number: ");
+            int userInput = input.nextInt();
+        
+            CountDown(userInput);
+    }
+    public static void CountDown(int num) {
+            if (num < 0) {
+            System.exit(0);
+        } 
+            else {
+                 System.out.println(num);
+            CountDown(num - 1);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+Solution Exercise 2 :
+
+import java.util.Scanner;
+
+public class Ex2Lab07 {
+	
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+
+		System.out.print("Enter an integer : ");
+		int value = input.nextInt();
+
+		reverseDisplay(value);
+	}
+	private static void reverseDisplay(int value) {
+		if (value < 10) 
+			System.out.println(value);
+		
+		else { 
+			System.out.print(value % 10);
+			reverseDisplay(value / 10); 
+		}
+	}
+
+}
+
+
+
+
+
+
+
