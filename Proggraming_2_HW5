@@ -1,0 +1,147 @@
+Proggraming_2_HW5
+
+Exercise 1:
+
+Design a new Triangle class that extends the abstract GeometricObject class:
+Draw the UML diagram for the classes Triangle and GeometricObject
+Implement the Triangle class
+Write a test program that prompts the user to enter three sides of the triangle, a color, 
+and a Boolean value to indicate whether the triangle is filled:
+The program should create a Triangle object with these sides and 
+set the color and filled properties using the input
+The program should display the area, perimeter, color, 
+and true or false to indicate whether it is filled or not
+
+----------------------------------------------------------------------------------------------------
+Solution Exercise 1 :
+#Draw the UML diagram for the classe Triangle and 
+GeometricObject :
+
+
+=========================================                   
+GeometricObject                         |<-------------------------|
+=========================================                          |
+-color: String                          |                          |
+-filled: Boolean                        |                          |
+-dateCreated: java.util.Data            |                          |
+=========================================                          |
++GeometricObject()                      |                          |
++getColor(): String                     |                          |
++setColor(color: String): void          |                          |
+ +isFilled(): boolean                   |                          | 
+ +setFilled(filled: boolean): void      |                          |
+ +getDataCreated(): java.util.Data      |                          |
+ +toString(): String                    |                          |
+=========================================                          |
+                                                                   |
+                                                                   |
+=========================================                          |
+Triangle                                |--------------------------|      
+=========================================
+-side1: Double                          |
+- side2: Double                         |
+- side3: Double                         |
+=========================================
++ Triangle()                            |
++ Triangle(double side1 ,               |
+double side2, double side3)             |
++ getside1(): double                    |
++ getside2(): double                    | 
++ getside3(): double                    |
++getArea(): double                      |
++getPerimeter(): double                 |
++toString(): String                     | 
+=========================================
+
+
+
+
+# Triangle class that extends the abstract GeometricObject class:
+
+import java.util.Scanner;
+public class Triangle extends GeometricObject {
+private double side1;
+private double side2;
+private double side3;
+public Triangle(){
+this.side1=1;
+this.side2=1;
+this.side3=1;
+}
+public Triangle(double newSide1,double newSide2,double newSide3) {
+this.side1=newSide1;
+this.side2=newSide2;
+this.side3=newSide3;
+}
+public double getSide1() {
+return side1;
+}
+public double getSide2() {
+return side2;
+}
+public double getSide3() {
+return side3;
+}
+public double getArea() {
+double P=(this.side1+this.side2+this.side3)/2;
+double S=Math.sqrt(P*(P-this.side1)*(P-this.side2)*(P-this.side3));
+return S;
+}
+public double getPerimeter() {
+return this.side1+this.side2+this.side3;
+}
+public String toString() {
+return "Triangle:side1 = "+this.side1+" side2 = "+this.side2+" side3 = 
+"+this.side3;
+}
+public static void main(String[] args) {
+double side1,side2,side3;
+String color;
+boolean filled;
+Scanner input = new Scanner(System.in);
+System.out.println("Please enter the three sides of the triangle:");
+side1=input.nextDouble();
+side2=input.nextDouble();
+side3=input.nextDouble();
+System.out.println("Please enter the color of the triangle:");
+color=input.next();
+System.out.println("Please enter a bool value to see if the triangle is filled:");
+filled=input.hasNext();
+Triangle a = new Triangle(side1,side2,side3);
+a.setColor(color);
+a.setFilled(filled);
+System.out.println("The area is:"+a.getArea()+"The side length 
+is:"+a.getPerimeter()+"The color is:"+a.getColor()+"Whether to fill:"+a.isFilled());
+ } 
+}
+public class GeometricObject {
+private String color="white";
+private boolean filled;
+private java.util.Date dateCreated;
+public GeometricObject(){
+dateCreated=new java.util.Date();
+}
+public GeometricObject(String color,boolean filled){
+dateCreated=new java.util.Date();
+this.color=color;
+this.filled=filled;
+}
+public String getColor(){
+return color;
+}
+public void setColor(String color){
+this.color=color;
+}
+public boolean isFilled(){
+return filled;
+}
+public void setFilled(boolean filled){
+this.filled=filled;
+}
+public java.util.Date getDateCreated(){
+return dateCreated;
+}
+public String toString(){
+return "created on"+dateCreated+"\ncolor:"+color+"and filled:"+filled;
+ }
+}
