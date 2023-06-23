@@ -1,0 +1,95 @@
+CS112_Final_Lab_Exam
+
+Coding Problem 1:  
+
+Write a Java program to store the rainbow color names as strings in a 
+TreeMap with keys starting from 1 to 7:
+1  “Purple”
+2  “Navy”
+3  “Blue”
+4  “Green”
+5  “Yellow”
+6  “Orange”
+7  “Red”
+Then, display all colors in which their keys are between 3 (inclusive) and 6 (inclusive).
+
+
+You should write your code in a single file named “Problem1.java”
+
+**********************************************************************************************************
+Coding Problem 2:
+
+Write a program that computes the power of an integer ax where the base is a and the exponent is x, recursively. 
+
+
+You should write your code in a single file named “Problem2.java” which contains a main method that reads in integer 
+base a from users and exponent x and calls method power to perform the computation recursively. 
+
+-------------------------------------------------------------------------------------------------------------------
+Solution Coding Problem 1:  
+
+
+package Problem;
+import java.util.Collection;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class Problem1 {
+
+    public static void main(String[] args) {
+        TreeMap treeMap = new TreeMap<Integer, String>();
+        treeMap.put(1, "Purple");
+        treeMap.put(2, "Navy");
+        treeMap.put(3, "Blue");
+        treeMap.put(4, "Green");
+        treeMap.put(5, "Yellow");
+        treeMap.put(6, "Orange");
+        treeMap.put(7, "Red");
+        Set<String> v = treeMap.keySet();
+
+        Collection<String> values = treeMap.values();
+        int a = 1;
+        for (String value : values) {
+            if (a >= 3 && a < 7) {
+                System.out.println(value);
+            }
+
+            a++;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+Solution Coding Problem 2:  
+
+package Problem;
+import java.util.Scanner;
+
+
+public class Problem2 {
+	public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter the base: ");
+        int base = input.nextInt();
+        System.out.println("Enter the exponent: ");
+        int exponent = input.nextInt();
+        System.out.println(base + "^" + exponent + "=" + power(base, exponent));
+    }
+
+    public static int power(int base, int exponent) {
+        if (exponent != 0) {
+            return (base * power(base, exponent - 1));
+        } else {
+            return 1;
+        }
+    }
+
+}
+
