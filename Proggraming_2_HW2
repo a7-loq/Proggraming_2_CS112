@@ -1,0 +1,87 @@
+Proggraming_2_HW2
+
+Exercise 1 – Account class:
+Design a class named Account that contains:
+A private int data field named id for the account 
+A private double data field named balance for the account 
+A private Date data field named dateCreated that stores the date when the account was created
+A no-arg constructor that creates a default account
+A constructor that creates an account with the specified id and initial balance
+The getters (i.e., accessors) and setters (i.e., mutators) methods for id and balance
+The getter method for dateCreated
+A method named withdraw that withdraws a specified amount from the account
+A method named deposit that deposits a specified amount to the account
+
+
+
+Exercise 2 – TestAccount class:
+Write a test program named TestAccount that performs the following:
+Create an Account object with an account ID of 1122 and a balance of 20,000 S.R. 
+Use the withdraw method to withdraw 2,500 S.R.
+Use the deposit method to deposit 3,000 S.R.
+Print the balance and the date when this account was created
+
+----------------------------------------------------------------------------------------------------
+Solution Exercise 1 (Account class) :
+
+import java.util.Date;
+public class Account{
+ 
+ private int id = 0;
+ private double balance = 0;
+ private Date dateCreated;
+ public Account(){
+ dateCreated = new Date();
+ }
+ public Account(int id, double initialBalance){
+ this.id = id;
+ this.balance = initialBalance;
+ dateCreated = new Date(); 
+ }
+ public void setId(int id){
+ this.id = id;
+ }
+ public void setBalance(double balance){
+ this.balance = balance;
+ }
+ public int getId(){
+ return this.id;
+ }
+ public double getBalance(){
+ return this.balance;
+ }
+ public Date getDateCreated(){
+ return this.dateCreated;
+ }
+ public void withdraw(double takeMoney){
+ this.balance = balance - takeMoney;
+ }
+ public void deposit(double addMoney){
+ this.balance = balance + addMoney;
+   }
+ 
+}
+
+
+
+
+Solution Exercise 2 (TestAccount class) :
+
+import java.util.Scanner;
+public class TestAccount {
+ 
+ public static void main(String[] args){
+ 
+ Account account = new Account(1122, 20000);
+ 
+ account.withdraw(2500);
+ account.deposit(3000);
+ System.out.println("Balance is "+ 
+account.getBalance());
+ System.out.println("This account was created at "+ 
+account.getDateCreated());
+
+     }
+ }
+ 
+
