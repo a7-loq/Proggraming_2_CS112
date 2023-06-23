@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class ThreeWords {
+	public static void main(String[] args) {
+        Scanner input = new Scanner(System.in) ; 
+        System.out.print("Enter 3 words >> "); 
+        String words = input.nextLine();
+        String strArray[] = words.split(" "); 
+        
+        counting(strArray) ;
+        
+    }
+    public static void counting(String [] word){
+        if(word.length>3)
+            System.out.print("please enter only 3 words");
+        String max = word[0] ; 
+        int i ;
+         for( i=1 ; i<word.length;i++){
+            if (word[i].length() > max.length()) 
+                 max = word[i];
+        }
+        System.out.print("the longest word is: "+max);
+    }
+
+}
