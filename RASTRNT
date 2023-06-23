@@ -1,0 +1,43 @@
+import java.util.Scanner;
+public class RASTRNT {
+public static void main(String[] args) {
+
+		String menu = "Welcome to Your Name Resturant\r\n"
+		  		+ "Please choose from the following menu:\r\n"
+		  		+ "1- Orange Juice (5 SR)\r\n"
+		  		+ "2- Apple Juice (3 SR)\r\n"
+		  		+ "3- Sandwich (10 SR)\r\n"
+		  		+ "4- Pizza (15 SR)\r\n"
+		  		+ "5- Pasta (20 SR)\r\n"
+		  		+ "6- Exit";
+        	System.out.println(menu);
+        	Scanner input = new Scanner(System.in);
+        	double total =0;
+        	int choice = 0;
+        	
+        	do {
+        		 choice = input.nextInt();
+        		
+        		if (choice == 1)
+        		total +=5;
+        		else if (choice == 2)
+        		total+=3;
+        		else if ( choice == 3)
+        		total+=10;
+        		else if ( choice == 4)
+        	    total+=15;
+        		else if ( choice == 5)
+        		total +=20;
+        		else if ( choice == 6)
+        		total +=0;
+        			else  
+        				System.out.println("Error ... Please enter a valid choice!");
+           	
+        	
+        	} while(choice != 6);
+        	
+        	
+        	System.out.println(" The total price of your order " + total);
+        	}
+
+                 }
