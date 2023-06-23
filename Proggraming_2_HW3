@@ -1,0 +1,38 @@
+Proggraming_2_HW3
+
+Exercise 1 :
+
+In HW2 , the Account class was defined to model a bank account. 
+An account has the properties account number, balance, a
+nd date created, and methods to deposit and withdraw funds:
+Create two subclasses for checking and saving accounts.
+A checking account has an overdraft limit, but a savings account cannot be overdrawn.
+Draw the UML diagram for the classes and then implement them. 
+Write a test program that creates objects of Account, SavingsAccount, 
+and CheckingAccount and invokes their toString() methods.
+
+---------------------------------------------------------------------------------------------------------
+Solution Exercise 1 :
+
+public class SavingsAccount extends Account {
+ public static void main(String[] args) {
+}
+ protected double OVERDRAFT_LIMIT = 0;
+ public SavingsAccount(int id, double balance) {
+ super(id, balance);
+ }
+ public void withdraw(double amount) {
+ double mBalance = 0;
+if (mBalance - amount >= OVERDRAFT_LIMIT) {
+ super.withdraw(amount);
+ }
+ }
+ public String toString() {
+ String mBalance = null;
+return "SavingsAccount{" +
+ "mBalance=" + mBalance +
+ 
+ '}';
+ 
+ } 
+}
