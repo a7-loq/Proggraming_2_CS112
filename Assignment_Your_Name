@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class Assignment {
+	public static void main(String[] args) {
+		Scanner input = new Scanner (System.in); {
+			 input.nextInt(); 
+		        System.out.print("Please enter your name: ");
+
+				
+		
+		
+		
+	}
+	}
+}
