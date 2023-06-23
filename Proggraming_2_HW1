@@ -1,0 +1,148 @@
+Proggraming_2_HW1
+
+Exercise 1:
+Consider the following class:
+
+Write its default constructor
+Write a code to declare an 
+object from this class using the 
+default constructor
+
+public class Dog { 
+	String name;  
+	String color; 
+	
+	void barking() { 
+	} 
+
+	void hungry() { 
+	} 
+
+	void sleeping() { 
+	} 
+} 
+
+
+
+
+Exercise 2:
+
+Draw the UML diagram of the following class:
+public class Employee { 
+	String name; 
+	double salary; 
+	
+	public Employee() { 
+	} 
+
+	public double getSalary() {
+ 		return this.salary;
+	} 
+
+	public String getName() {
+		return this.name; 
+	} 
+} 
+
+
+
+Exercise 3:
+Write a program to print the area of a rectangle by creating a class named “Rectangle” 
+with constructor having the two sides (width and height) as its parameters
+Test the class by creating a main class which contains the main method 🡪 name the class “TestRectangle” 
+Use the Scanner library to take the two sides as inputs from the console. 
+
+
+-------------------------------------------------------------------------------------------------------------------
+Solution Exercise 1:
+
+public class Dog {
+                     String name; 
+                     String color; 
+                 class Dog {
+ 
+ 
+             void barking() {
+                    System.out.println("barking");
+                       }
+void hungry(){ }
+void sleeping(){ }
+   }
+}
+
+
+Solution Exercise 2:
+UML Class Diagram :
+
+Class name -->                  Employee
+
+Data fields -->                 name : String
+                                salary : double
+
+Constructors and methods -->    Employee()
+                                Employee(String n, double s )
+                                getSalary() : double
+                                getName() : String
+
+
+
+
+Solution Exercise 3:
+
+import java.util.Scanner;
+public class Rectangle {
+ public static void main(String[] args){
+ try (Scanner input = new Scanner (System.in)) {
+{
+Rectangle r1 = new
+Rectangle();
+ Rectangle r2 = new Rectangle(); 
+ printRect_ALL(r1);
+ printRect_ALL(r2); 
+}
+}
+ }
+private String objID;
+private String width;
+private String height;
+ 
+ static void printRect_ALL(Rectangle rect){
+ System.out.println("\n#Rectangle_"+rect.objID);
+ System.out.println("Width: "+rect.width);
+ System.out.println("Height: "+rect.height);
+ System.out.println("Area: "+rect.getArea());
+ System.out.println("Perimeter: "+rect.getPerimeter());
+ }
+private String getPerimeter() {
+return null;
+}
+private String getArea() {
+return null;
+}
+ }
+ class Rectangel {
+ 
+ double width = 1;
+ double height = 1;
+ static int objCount = 0;
+ int objID;
+ 
+ void Rectangle(){
+ objCount++;
+ objID = objCount; 
+ }
+ void Rectangle(double w, double h){
+ width = w;
+ height = h;
+ 
+ objCount++;
+ objID = objCount; 
+ }
+ double getArea(){
+ return width * height;
+ }
+ double getPerimeter(){
+ return 2*(width+height);
+ } }
+
+
