@@ -1,0 +1,17 @@
+public class Dog {
+	
+	String name;  
+	String color; 
+	
+    class Dog {
+    	
+    
+	void barking() {
+		System.out.println("barking");
+	}
+	
+	void hungry(){   }
+	void sleeping(){   }
+	}
+}
+
