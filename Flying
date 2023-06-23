@@ -1,0 +1,40 @@
+import java.util.Scanner;
+public class Flying {
+	
+	public static void main(String[] args) {
+	      double p,v,wsa,lc;
+	       double  weight,l;
+	      String name;
+	         Scanner sc= new Scanner(System.in);
+	      
+	         System.out.print("\nEnter air density (p) >> ");
+	         p= sc.nextDouble();
+	         System.out.print("Enter velocity (m/s) >> ");
+	         v= sc.nextDouble();
+	         System.out.print("Enter wing surface area (m^2) >> ");
+	         wsa= sc.nextDouble();
+	         System.out.print("Enter lift co-efficient >>  ");
+	         lc= sc.nextDouble();
+	         sc.nextLine();
+	         System.out.print("Enter aircraft name >> ");
+	         name= sc.nextLine();
+	         System.out.print("Enter aircraft weight >>");
+	         weight= sc.nextDouble();
+
+	         l = ((p * (v*v) * wsa *lc)/2)/9.80;
+
+	         if((Math.abs(weight-l))<250)
+	         {
+	            System.out.print("The "+name+" is flying level");
+	         }
+	         else if((weight-l)>250)
+	         {
+	            System.out.print("The "+name+" is descending");
+	         }
+	         else if((weight-l)<250)
+	         {
+	            System.out.print("The "+name+" is climbing");
+	         }
+	       }
+
+}
