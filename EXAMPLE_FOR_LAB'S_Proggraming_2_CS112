@@ -1,0 +1,675 @@
+EXAMPLE_FOR_LAB'S_Proggraming_2_CS112
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+Circle code
+
+
+
+// Circle.java: The circle class that extends GeometricObject
+public class Circle extends GeometricObject {
+  private double radius;
+  /**Default constructor*/
+  public Circle() {
+    this(1.0);
+  }
+  /**Construct circle with a specified radius*/
+  public Circle(double radius) {
+    this(radius, "white", false);
+  }
+  /**Construct a circle with specified radius, filled, and color*/
+  public Circle(double radius, String color, boolean filled) {
+    super(color, filled);
+    this.radius = radius;
+  }
+  /**Return radius*/
+  public double getRadius() {
+    return radius;
+  }
+  /**Set a new radius*/
+  public void setRadius(double radius) {
+    this.radius = radius;
+  }
+  /**Implement the getArea method defined in GeometricObject*/
+  public double getArea() {
+    return radius*radius*Math.PI;
+  }
+
+  /**Implement the getPerimeter method defined in GeometricObject*/
+  public double getPerimeter() {
+    return 2*radius*Math.PI;
+  }
+  /**Override the equals() method defined in the Object class*/
+  public boolean equals(Circle circle) {
+    return this.radius == circle.getRadius();
+  }
+  public String toString() {
+    return "[Circle] radius = " + radius;
+  }
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+GeometricObject code
+
+
+
+/ GeometricObject.java: The abstract GeometricObject class
+public abstract class GeometricObject {
+  private String color = "white";
+  private boolean filled;
+
+  /**Default construct*/
+  protected GeometricObject() {
+  }
+
+  /**Construct a geometric object*/
+  protected GeometricObject(String color, boolean filled) {
+    this.color = color;
+    this.filled = filled;
+  }
+
+  /**Getter method for color*/
+  public String getColor() {
+    return color;
+  }
+
+  /**Setter method for color*/
+  public void setColor(String color) {
+    this.color = color;
+  }
+
+  /**Getter method for filled. Since filled is boolean,
+     so, the get method name is isFilled*/
+  public boolean isFilled() {
+    return filled;
+  }
+
+  /**Setter method for filled*/
+  public void setFilled(boolean filled) {
+    this.filled = filled;
+  }
+
+  /**Abstract method findArea*/
+  public abstract double getArea();
+
+  /**Abstract method getPerimeter*/
+  public abstract double getPerimeter();
+}
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+Rectangle code
+
+
+
+public class Rectangle extends GeometricObject {
+private double width;
+private double height;
+
+public Rectangle() {
+}
+
+public Rectangle(double width, double height) {
+this.width = width;
+this.height = height;
+}
+
+/** Return width */
+public double getWidth() {
+return width;
+}
+
+/** Set a new width */
+public void setWidth(double width) {
+this.width = width;
+}
+
+/** Return height */
+public double getHeight() {
+return height;
+}
+
+/** Set a new height */
+public void setHeight(double height) {
+this.height = height;
+}
+
+/** Return area */
+public double getArea() {
+return width * height;
+}
+
+/** Return perimeter */
+public double getPerimeter() {
+return 2 * (width + height);
+}
+}
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+CastingDemo code
+
+
+
+public class CastingDemo {
+  /** Main method */
+  public static void main(String[] args) {
+    // Create and initialize two objects
+    Object object1 = new CircleFromSimpleGeometricObject(1);
+    Object object2 = new RectangleFromSimpleGeometricObject(1, 1);
+
+    // Display circle and rectangle
+    displayObject(object1);
+    displayObject(object2);
+  }
+
+  /** A method for displaying an object */
+  public static void displayObject(Object object) {
+    if (object instanceof CircleFromSimpleGeometricObject) {
+      System.out.println("The circle area is " +
+        ((CircleFromSimpleGeometricObject)object).getArea());
+      System.out.println("The circle diameter is " +
+        ((CircleFromSimpleGeometricObject)object).getDiameter());
+    }
+    else if (object instanceof 
+                  RectangleFromSimpleGeometricObject) {
+      System.out.println("The rectangle area is " +
+        ((RectangleFromSimpleGeometricObject)object).getArea());
+    }
+  }
+}
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+CircleFromSimpleGeometricObject code
+
+
+
+
+public class CircleFromSimpleGeometricObject 
+    extends SimpleGeometricObject {
+  private double radius;
+
+  public CircleFromSimpleGeometricObject() {
+  }
+
+  public CircleFromSimpleGeometricObject(double radius) {
+    this.radius = radius;
+  }
+
+  public CircleFromSimpleGeometricObject(double radius, 
+      String color, boolean filled) {
+    this.radius = radius;
+    setColor(color);
+    setFilled(filled);
+  }
+
+  /** Return radius */
+  public double getRadius() {
+    return radius;
+  }
+
+  /** Set a new radius */
+  public void setRadius(double radius) {
+    this.radius = radius;
+  }
+
+  /** Return area */
+  public double getArea() {
+    return radius * radius * Math.PI;
+  }
+  
+  /** Return diameter */
+  public double getDiameter() {
+    return 2 * radius;
+  }
+  
+  /** Return perimeter */
+  public double getPerimeter() {
+    return 2 * radius * Math.PI;
+  }
+
+  /* Print the circle info */
+  public void printCircle() {
+    System.out.println("The circle is created " + getDateCreated() +
+      " and the radius is " + radius);
+  }
+}
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+RectangleFromSimpleGeometricObject code
+
+
+
+public class RectangleFromSimpleGeometricObject 
+    extends SimpleGeometricObject {
+  private double width;
+  private double height;
+
+  public RectangleFromSimpleGeometricObject() {
+  }
+
+  public RectangleFromSimpleGeometricObject(
+      double width, double height) {
+    this.width = width;
+    this.height = height;
+  }
+
+  public RectangleFromSimpleGeometricObject(
+      double width, double height, String color, boolean filled) {
+    this.width = width;
+    this.height = height;
+    setColor(color);
+    setFilled(filled);
+  }
+
+  /** Return width */
+  public double getWidth() {
+    return width;
+  }
+
+  /** Set a new width */
+  public void setWidth(double width) {
+    this.width = width;
+  }
+
+  /** Return height */
+  public double getHeight() {
+    return height;
+  }
+
+  /** Set a new height */
+  public void setHeight(double height) {
+    this.height = height;
+  }
+
+  /** Return area */
+  public double getArea() {
+    return width * height;
+  }
+
+  /** Return perimeter */
+  public double getPerimeter() {
+    return 2 * (width + height);
+  }
+}
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+TestArrayList code
+
+
+
+import java.util.ArrayList;
+
+public class TestArrayList {
+  public static void main(String[] args) {
+    // Create a list to store cities
+    ArrayList<String> cityList = new ArrayList<>();
+
+    // Add some cities in the list
+    cityList.add("London");
+    // cityList now contains [London]
+    cityList.add("Denver");
+    // cityList now contains [London, Denver]
+    cityList.add("Paris");
+    // cityList now contains [London, Denver, Paris]
+    cityList.add("Miami");
+    // cityList now contains [London, Denver, Paris, Miami]
+    cityList.add("Seoul");
+    // contains [London, Denver, Paris, Miami, Seoul]
+    cityList.add("Tokyo");
+    // contains [London, Denver, Paris, Miami, Seoul, Tokyo]
+
+    System.out.println("List size? " + cityList.size()); 
+    System.out.println("Is Miami in the list? " +
+      cityList.contains("Miami")); 
+    System.out.println("The location of Denver in the list? "
+      + cityList.indexOf("Denver")); 
+    System.out.println("Is the list empty? " +
+      cityList.isEmpty()); // Print false
+
+    // Insert a new city at index 2
+    cityList.add(2, "Xian");
+    // contains [London, Denver, Xian, Paris, Miami, Seoul, Tokyo]
+
+    // Remove a city from the list
+    cityList.remove("Miami");
+    // contains [London, Denver, Xian, Paris, Seoul, Tokyo]
+
+    // Remove a city at index 1
+    cityList.remove(1);
+    // contains [London, Xian, Paris, Seoul, Tokyo]
+
+    // Display the contents in the list
+    System.out.println(cityList.toString());
+
+    // Display the contents in the list in reverse order
+    for (int i = cityList.size() - 1; i >= 0; i--)
+      System.out.print(cityList.get(i) + " ");
+    System.out.println();
+    
+    // Create a list to store two circles
+    ArrayList<Circle> list = new ArrayList<>();
+    
+    // Add two circles
+    list.add(new Circle(2));
+    list.add(new Circle(3));
+    
+    // Display the area of the first circle in the list
+    System.out.println("The area of the circle? " +
+      list.get(0).getArea());
+  }
+}
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+CircleWithException code
+
+
+
+package lecture07;
+
+public class CircleWithException {
+	  /** The radius of the circle */
+	  private double radius;
+	 
+	  /** The number of the objects created */
+	  private static int numberOfObjects = 0;
+	 
+	  /** Construct a circle with radius 1 */
+	  public CircleWithException() {
+		  this(1.0);
+	 }
+	
+	 /** Construct a circle with a specified radius */
+	 public CircleWithException(double newRadius) {
+		 setRadius(newRadius);
+		 numberOfObjects++;
+	 }
+	
+	 /** Return radius */
+	 public double getRadius() {
+		 return radius;
+	 }
+	
+	 /** Set a new radius */
+	 public void setRadius(double newRadius) throws IllegalArgumentException {
+		 if (newRadius >= 0)
+			 radius = newRadius;
+		 else
+			 throw new IllegalArgumentException("Radius cannot be negative");
+	 	}
+	
+	 /** Return numberOfObjects */
+	 public static int getNumberOfObjects() {
+		 return numberOfObjects;
+	 }
+	
+	 /** Return the area of this circle */
+	 public double findArea() {
+		 return radius * radius * 3.14159;
+	 }
+	}
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+InputMismatchExceptionDemo code
+
+
+
+package lecture07;
+
+import java.util.*;
+
+public class InputMismatchExceptionDemo {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		boolean continueInput = true;
+
+		do {
+			try {
+				System.out.print("Enter an integer: ");
+				int number = input.nextInt();
+
+				// Display the result
+				System.out.println("The number entered is " + number);
+
+				continueInput = false;
+				}
+			catch (InputMismatchException ex) {
+				System.out.println("Try again. (" + "Incorrect input: an integer is required)");
+				input.nextLine(); // Discard input
+			}
+		} while (continueInput);
+	}
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+Quotient code
+
+
+
+package lecture07;
+
+import java.util.Scanner;
+
+public class Quotient {
+	
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+
+		// Prompt the user to enter two integers
+		System.out.print("Enter two integers: ");
+		int number1 = input.nextInt();
+		int number2 = input.nextInt();
+
+		System.out.println(number1 + " / " + number2 + " is " + (number1 / number2));
+		}
+	}
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+QuotientWithException code
+
+
+package lecture07;
+
+import java.util.Scanner;
+
+public class QuotientWithException {
+	public static int quotient(int number1, int number2) {
+		if (number2 == 0)
+			throw new ArithmeticException("Divisor cannot be zero");
+		return number1 / number2;
+		}
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+
+		// Prompt the user to enter two integers
+		System.out.print("Enter two integers: ");
+		int number1 = input.nextInt();
+		int number2 = input.nextInt();
+
+		try {
+			int result = quotient(number1, number2);
+			System.out.println(number1 + " / " + number2 + " is " + result);
+			}
+		catch (ArithmeticException ex) {
+			System.out.println("Exception: an integer " + "cannot be divided by zero ");
+		}
+
+		System.out.println("Execution continues ...");
+		}
+	}
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+QuotientWithMethod code
+
+
+package lecture07;
+
+import java.util.Scanner;
+
+public class QuotientWithMethod {
+	public static int quotient(int number1, int number2) {
+		if (number2 == 0) {
+			System.out.println("Divisor cannot be zero");
+			System.exit(1);
+		}
+
+		return number1 / number2;
+	}
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+
+		// Prompt the user to enter two integers
+		System.out.print("Enter two integers: ");
+		int number1 = input.nextInt();
+		int number2 = input.nextInt();
+
+		int result = quotient(number1, number2);
+		System.out.println(number1 + " / " + number2 + " is " + result);
+		}
+	}
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+CircleWithRadiusException code
+
+
+package lecture08;
+
+class CircleWithRadiusException {
+	/** The radius of the circle */
+	private double radius;
+
+	/** The number of objects created */
+	private static int numberOfObjects = 0;
+
+	/** Construct a circle with radius 1 */
+	public CircleWithRadiusException() throws InvalidRadiusException {
+		this(1.0);
+	}
+
+	/** Construct a circle with a specified radius */
+	public CircleWithRadiusException(double newRadius) throws InvalidRadiusException {
+		setRadius(newRadius);
+		numberOfObjects++;
+	}
+
+	/** Return radius */
+	public double getRadius() { 
+		return radius;
+	 }
+	
+	 /** Set a new radius */
+	 public void setRadius(double newRadius) throws InvalidRadiusException {
+		 if (newRadius >= 0)
+			 radius = newRadius;
+		 else
+			 throw new InvalidRadiusException(newRadius);
+	 }
+	
+	 /** Return numberOfObjects */
+	 public static int getNumberOfObjects() {
+		 return numberOfObjects;
+	 }
+	
+	 /** Return the area of this circle */
+	 public double findArea() {
+		 return radius * radius * 3.14159;
+	 }
+}
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+InvalidRadiusException code
+
+
+
+package lecture08;
+
+public class InvalidRadiusException extends Exception {
+	  private double radius;
+	 
+	  /** Construct an exception */
+	  public InvalidRadiusException(double radius) {
+		  super("Invalid radius " + radius);
+		  this.radius = radius;
+	  }
+	 
+	 /** Return the radius */
+	 public double getRadius() {
+		 return radius;
+	 	}
+	 }
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+TestCircleWithRadiusException. Code
+
+
+
+package lecture08;
+
+public class TestCircleWithRadiusException {
+	public static void main(String[] args) {
+		  try {
+			  new CircleWithRadiusException(5);
+			  new CircleWithRadiusException(-5);
+			  new CircleWithRadiusException(0);
+		  }
+		  catch (InvalidRadiusException ex) {
+			  System.out.println(ex);
+		 }
+		
+		 System.out.println("Number of objects created: " + CircleWithRadiusException.getNumberOfObjects());
+		 } 
+
+}
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
