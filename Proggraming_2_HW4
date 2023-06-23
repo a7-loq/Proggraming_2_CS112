@@ -1,0 +1,70 @@
+Proggraming_2_HW4
+
+Exercise 1:
+Write a program that prompts the user to read two integers and displays their sum. 
+Your program should prompt the user to read the number again if the input is incorrect.
+#Hint: use the InputMismatchException
+
+
+
+Exercise 2:
+Write a program that meets the following requirements:
+Creates an array with 100 randomly chosen integers. 
+Prompts the user to enter the index of the array, then displays the corresponding element value. 
+If the specified index is out of bounds, display the message Out of Bounds
+#Hint: use the ArrayIndexOutOfBoundsException
+
+----------------------------------------------------------------------------------------------------------------
+Solution Exercise 1:
+
+public class HW4 {
+public static void main(String[] args) {
+ java.util.Scanner in = new java.util.Scanner(System.in);
+ int n1 = 0;
+ int n2 = 0;
+ while(true) {
+ System.out.print("Please enter in 2 integers to get 
+their sum: "); 
+ try {
+ n1 = in.nextInt();
+ n2 = in.nextInt();
+ 
+ break;
+ } 
+ catch (java.util.InputMismatchException ime) {
+ System.out.printf("You must enter 2 integers %n%n");
+ in.nextLine(); 
+ }
+ 
+ } 
+ System.out.printf("The sum is %d%n", (n1+n2));
+ }
+}
+
+
+
+Solution Exercise 2:
+
+import java.util.*;
+public class HW4 {
+public static void main(String[] args) {
+Scanner input = new Scanner(System.in);
+int[] array = getArray();
+System.out.print("Enter the index of the array: ");
+try {
+System.out.println("The corresponding element 
+value is " + 
+array[input.nextInt()]);
+}
+catch (ArrayIndexOutOfBoundsException ex) {
+System.out.println("Out of Bounds.");
+}
+}
+public static int[] getArray() {
+int[] array = new int[100];
+for (int i = 0; i < array.length; i++) {
+array[i] = (int)(Math.random() * 100) + 1;
+}
+return array;
+}
+}
